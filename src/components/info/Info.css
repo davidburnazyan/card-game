@@ -1,0 +1,14 @@
+* {
+    font-family: sans-serif;
+}
+.infoDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button {
+    cursor: pointer;
+    border: 1px solid #ccc;
+    padding: 7px 30px;
+    border-radius: 7px;
+}

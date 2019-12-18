@@ -3,7 +3,7 @@ import Map from '../styled';
 
 const Container = (props) => {
     const handleClick = (id,image) => {
-        props.chooseObject(id,image)
+        props.chooseElem(id,image)
     }
     const renderView = () => {
         return props.initialState.map((event) => {

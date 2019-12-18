@@ -55,7 +55,7 @@ const Map = styled.div`
     cursor: pointer;
     box-shadow: 0 0 10px rgba(0,0,0,.5);
     background-image: url('/images/logo.png');
-    background-size: 64px 80px;
+    background-size: 65px 70px;
     background-repeat: space;
     background-position: center;
     &:hover {

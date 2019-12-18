@@ -16,7 +16,7 @@ const Container = (props) => {
     }
     return (
         <>
-            {renderView()}
+            { renderView() }
         </>
     )
 

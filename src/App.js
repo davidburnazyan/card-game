@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Container from './components/container';
-import Info from './components/info';
+import Container from './components/Container';
+import Info from './components/Info';
 
 import './App.css';
 export default class App extends Component {
@@ -8,9 +8,9 @@ export default class App extends Component {
         super(props);
         this.array = [
             { id: 0, image: '1.png', status: false },
-            { id: 1, image: '1.png', status: false },
-            { id: 2, image: '2.png', status: false },
-            { id: 3, image: '2.png', status: false },
+            { id: 1, image: '2.png', status: false },
+            { id: 2, image: '3.png', status: false },
+            { id: 3, image: '4.png', status: false },
             { id: 4, image: '5.png', status: false },
             { id: 5, image: '6.png', status: false },
             { id: 6, image: '7.png', status: false },
@@ -37,10 +37,10 @@ export default class App extends Component {
         }
     }
     changeState = (oldImage = null) => {
-        let initialState = null;
+        let { initialState } = this.state;
         this.count++;
         if(oldImage !== null){
-            initialState = this.state.initialState.filter(event => {
+            initialState = initialState.filter(event => {
                 if(oldImage !== event.image) {
                     if(event.id === this.one.id) {
                         event.status = true
@@ -51,7 +51,7 @@ export default class App extends Component {
                 }
             })
         }else {
-            initialState = this.state.initialState.map(event => {
+            initialState = initialState.map(event => {
                 if(event.id === this.one.id) return { ...event, status: true }
                 else if(event.id === this.two.id) {
                     return { ...event, status: true }
@@ -65,9 +65,7 @@ export default class App extends Component {
         this.count = 0;
         this.one = { id: null, image: null };
         this.two = { id: null, image: null };
-        this.setState({
-            initialState: this.sortArray(this.array)
-        })
+        this.setState({ initialState: this.sortArray(this.array) })
     }
     chooseElem = (id,image) => {
         if(this.state.initialState === 2 && this.one.image === this.two.image){
@@ -92,32 +90,28 @@ export default class App extends Component {
             this.changeState()
         }
     }
-    ShowInfo = () => {
-        if(this.state.initialState.length === 2 && this.one.image === this.two.image ||
-            this.state.initialState.length === 0 ){
-            return <Info count={this.count} update={this.updateInitialState}/>
-        }else {
-            return null
-        }
-    }
-    ShowContainer = () => {
-        if(this.state.initialState.length === 0){
-            return null
-        }else {
-            return <Container
-                initialState={this.state.initialState}
-                chooseElem={this.chooseElem}
-            />
-        }
-    }
     render() {
+        const { initialState } = this.state;
+        const ShowInfo = () => {
+            if(initialState.length === 2 && this.one.image === this.two.image || initialState.length === 0 ){
+                return <Info count={this.count} update={this.updateInitialState}/>
+            }else {
+                return null
+            }
+        }
+        const ShowContainer = () => {
+            if(initialState.length === 0)
+                return null
+            else
+                return <Container  initialState={initialState} chooseElem={this.chooseElem} />
+        }
         return (
             <>
                 <div className="app">
-                    { this.ShowContainer() }
+                    { ShowContainer() }
                 </div>
                 <div>
-                    {this.ShowInfo()}
+                    { ShowInfo() }
                 </div>
             </>
         )

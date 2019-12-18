@@ -1,5 +1,5 @@
 import React from 'react';
-import Map from '../styled';
+import Map from '../Styled';
 
 const Container = (props) => {
     const handleClick = (id,image) => {

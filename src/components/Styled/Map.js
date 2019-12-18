@@ -53,17 +53,15 @@ const Map = styled.div`
     height: 120px;
     border-radius: 10px;
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(0,0,0,.5);
+    box-shadow: 0 0 10px rgba(0,0,0, 0.1);
     background-image: url('/images/logo.png');
     background-size: 65px 70px;
     background-repeat: space;
     background-position: center;
     &:hover {
-        box-shadow: 0 0 10px rgba(0,0,0,1);
+        box-shadow: 0 0 10px rgba(0,0,0, 1);
     }
-
     ${status}
-    
     webkit-animation-fill-mode: forwards;
     -moz-animation-fill-mode: forwards;
     -o-animation-fill-mode: forwards;

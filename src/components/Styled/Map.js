@@ -2,6 +2,8 @@ import styled, {css, keyframes} from 'styled-components';
 
 const status = ({ status ,  image }) => {
     if(status) {
+        console.log(1);
+        
         const rotate = keyframes`
             from {
                 transform: rotateY(0deg);
@@ -23,24 +25,7 @@ const status = ({ status ,  image }) => {
             animation: ${rotate} .5s;
         `
     }else {
-        const rotate = keyframes`
-            from {
-                transform: rotateY(180deg);
-                background-image: url(/images/${image});
-            }
-            50% {
-                transform: rotateY(90deg);
-                background-image: url(/images/${image});
-            }
-            60% {
-                transform: rotateY(90deg);
-                background-image: url(/images/logo.png);
-            }
-            to {
-                background-image: url(/images/logo.png);
-                transform: rotateY(0deg);
-            }
-        `;
+        const rotate = keyframes`background-image: url(/images/logo.png);`;
         return css`
             animation: ${rotate} .5s;
         `

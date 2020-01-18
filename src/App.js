@@ -1,29 +1,13 @@
 import React, { Component } from 'react';
 import Container from './components/Container';
 import Info from './components/Info';
+import { connect } from 'react-redux';
 
 import './App.css';
-export default class App extends Component {
+class App extends Component {
     constructor(props) {
-        super(props);
-        this.array = [
-            { id: 0, image: '1.png', status: false },
-            { id: 1, image: '2.png', status: false },
-            { id: 2, image: '3.png', status: false },
-            { id: 3, image: '4.png', status: false },
-            { id: 4, image: '5.png', status: false },
-            { id: 5, image: '6.png', status: false },
-            { id: 6, image: '7.png', status: false },
-            { id: 7, image: '8.png', status: false },
-            { id: 8, image: '1.png', status: false },
-            { id: 9, image: '2.png', status: false },
-            { id: 10, image: '3.png', status: false },
-            { id: 11, image: '4.png', status: false },
-            { id: 12, image: '5.png', status: false },
-            { id: 13, image: '6.png', status: false },
-            { id: 14, image: '7.png', status: false },
-            { id: 15, image: '8.png', status: false }
-        ]
+        super(props); 
+        this.array = props.array;
         this.count = 0;
         this.one = { id: null, image: null };
         this.two = { id: null, image: null };
@@ -93,7 +77,7 @@ export default class App extends Component {
     render() {
         const { initialState } = this.state;
         const ShowInfo = () => {
-            if(initialState.length === 2 && this.one.image === this.two.image || initialState.length === 0 ){
+            if(initialState.length <= 2 && this.one.image === this.two.image ){
                 return <Info count={this.count} update={this.updateInitialState}/>
             }else {
                 return null
@@ -117,3 +101,9 @@ export default class App extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return state;
+}
+
+export default connect(mapStateToProps)(App)

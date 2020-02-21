@@ -52,9 +52,7 @@ class App extends Component {
         this.setState({ initialState: this.sortArray(this.array) })
     }
     chooseElem = (id,image) => {
-        if(this.state.initialState === 2 && this.one.image === this.two.image){
-            /** last pair of maps*/
-        }else if(this.one.id === null) {
+       if(this.one.id === null) {
             /** first click*/
             this.one = { id, image }
             this.changeState()
